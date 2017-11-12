@@ -1,64 +1,10 @@
-/*
-    -------------------------------------------------------------------------
-    --      EXPRESS AREA
-    -------------------------------------------------------------------------
-*/
-
-//UsingExpress
 const express = require('express')
 const bodyParser = require('body-parser')
 
 const app = express()
 app.use(bodyParser.json())
 
-/*
-    -------------------------------------------------------------------------
-    --      SEQUELIZE AREA
-    -------------------------------------------------------------------------
-*/
-
-//Using Sequelize (ORM for Postgress)
-const Sequelize = require('sequelize')
-
-const host = ''
-const database = ''
-const username = ''
-const password = ''
-
-const sequelize = new Sequelize(database, username, password, {
-    host: host,
-    dialect: 'postgres',
-    dialectOptions: {
-        ssl: true
-    }
-})
-
-//Testing database connection
-sequelize.authenticate().then(() => {
-    console.log('Database connection OK')
-}).catch(err => {
-    console.log('Unable to connect to the database')
-})
-
-//Create UserModel
-const User = sequelize.define('UserModel',{
-    firstName: {
-        type: Sequelize.STRING
-    },
-    lastName: {
-        type: Sequelize.STRING
-    }
-})
-
-User.sync().then(() => {
-    console.log('database running')
-})
-
-/*
-    -------------------------------------------------------------------------
-    --      EXPRESS ROUTES AREA
-    -------------------------------------------------------------------------
-*/
+const User = require("./Models/UserModel")
 
 //GET all Users
 app.get('/user', (req, res) => {
