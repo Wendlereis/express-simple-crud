@@ -6,13 +6,19 @@ const bodyParser = require('body-parser')
 const app = express()
 app.use(bodyParser.json())
 
+app.set('view engine', 'ejs')
+
 const User = require("./Models/UserModel")
 
 //GET all Users
 app.get('/user', (req, res) => {
     User.findAll().then(user => {
-        res.send(user)
+        res.render('index', {user})
     })
+})
+
+app.get('/user/create', (req, res) => {
+    res.render('create')
 })
 
 //GET user by its id

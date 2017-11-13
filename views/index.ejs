@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Express CRUD</title>
+    </head>
+
+    <body>
+        <h1>Users</h1>
+        
+        <a href="/user/create">New User</a>
+
+        <table>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+            </tr>
+            <% user.forEach((u) => { %>
+                <tr>
+                    <td><%= u.firstName%></td>
+                    <td><%= u.lastName%></td>
+                </tr>
+            <% }) %>
+        </table>
+    </body>
+</html>
