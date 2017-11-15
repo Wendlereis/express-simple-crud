@@ -1,21 +1,23 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Express CRUD - Create</title>
     </head>
 
     <body>
         <h1>Create</h1>
 
-        <form method="post" action="/user">
+        <form method="post" action="/">
             <p>First Name</p>
-            <input type="text" name="firstName" id="firstName">
+            <input type="text" id="firstName" name="firstName" />
 
             <p>Last Name</p>
-            <input type="text" name="lastName" id="lastName">
+            <input type="text" id="lastName" name="lastName" />
 
-            <p>
-                <input type="submit" value="Save">
-            </p>
+            <p><input type="submit" onclick="createNewUser()" value="Save"></p>
         </form>
     </body>
 </html>

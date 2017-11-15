@@ -4,25 +4,57 @@ const express = require('express')
 const bodyParser = require('body-parser')
 
 const app = express()
+app.use(bodyParser.urlencoded())
 app.use(bodyParser.json())
+
+app.use(express.static('public'))
 
 app.set('view engine', 'ejs')
 
-const User = require("./Models/UserModel")
+const User = require("./models/UserModel")
 
 //GET all Users
-app.get('/user', (req, res) => {
-    User.findAll().then(user => {
-        res.render('index', {user})
+app.get('/', (req, res) => {
+    User.findAll().then(users => {
+        res.render('index', {users})
     })
 })
 
-app.get('/user/create', (req, res) => {
+//GET opens view create 
+app.get('/create', (req, res) => {
     res.render('create')
 })
 
+//GET opens view update
+app.get('/update/:id', (req, res) => {
+    let id = req.params['id']
+    
+    User.findById(id).then((user) => {
+        if(user){
+            res.render('update', {user})
+        }
+        else {
+            res.sendStatus(404) 
+        }
+    })    
+})
+
+//GET opens view update
+app.get('/delete/:id', (req, res) => {
+    let id = req.params['id']
+    
+    User.findById(id).then((user) => {
+        if(user){
+            res.render('delete', {user})
+        }
+        else {
+            res.sendStatus(404) 
+        }
+    })    
+})
+
 //GET user by its id
-app.get('/user/:id', (req, res) => {
+app.get('/:id', (req, res) => {
     let id = req.params['id']
 
     User.findById(id).then((user) => {
@@ -36,8 +68,10 @@ app.get('/user/:id', (req, res) => {
 })
 
 //POST create a new user
-app.post('/user', (req, res) => {
+app.post('/', (req, res) => {
     let body = req.body
+
+    console.log(body)
 
     let newUser = {
         firstName: body['firstName'],
@@ -50,7 +84,7 @@ app.post('/user', (req, res) => {
 })
 
 //PUT update a user by its id
-app.put('/user/:id', (req, res) => {
+app.put('/:id', (req, res) => {
     let body = req.body
     let id = req.params['id']
 
@@ -74,7 +108,7 @@ app.put('/user/:id', (req, res) => {
 })
 
 //DELETE delete a user by its id
-app.delete('/user/:id', (req, res) => {
+app.delete('/:id', (req, res) => {
     let id = req.params['id']
 
     User.destroy({
