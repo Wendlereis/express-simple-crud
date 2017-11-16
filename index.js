@@ -69,7 +69,7 @@ app.post('/update/:id', (req, res) => {
         }
     }).then((count) => {
         if(count > 0){
-            res.sendStatus(200)
+            res.redirect('/')
         }
         else {
             res.sendStatus(404)
@@ -87,7 +87,7 @@ app.post('/delete/:id', (req, res) => {
         }
     }).then((count) => {
         if(count > 0){
-            res.sendStatus(204)
+            res.redirect('/')
         }
         else {
             res.sendStatus(404)
@@ -105,7 +105,7 @@ app.post('/', (req, res) => {
     }
 
     User.create(newUser).then((user) => {
-        res.send(user)
+        res.redirect('/')
     })
 })
 
