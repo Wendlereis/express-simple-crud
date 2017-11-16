@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow|Nunito');
+
+.navbar {
+    height: 80px;
+    background: #0097A7;
+}
+
+.navbar label {
+    color: #ffffff;
+    font-family: Barlow;
+    font-size: 26px;
+}
+
+h1 {
+    font-family: Nunito;
+    font-size: 2.4rem;
+}

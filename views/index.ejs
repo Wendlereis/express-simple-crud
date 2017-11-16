@@ -5,27 +5,51 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Express CRUD</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+        <script src="https://use.fontawesome.com/699a961ae1.js"></script>
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/content.css">
     </head>
     <body>
-        <h1>Users</h1>
-        
-        <a href="/create">New User</a>
+        <nav class="navbar">
+            <label>NodeJs + Express CRUD</label>
+        </nav>        
 
-        <table>
-            <tr>
-                <td>ID</td>
-                <td>First Name</td>
-                <td>Last Name</td>
-            </tr>
-            <% users.forEach((u) => { %>
-                <tr>
-                    <td><%= u.id%></td>
-                    <td><%= u.firstName%></td>
-                    <td><%= u.lastName%></td>
-                    <td><a href="/update/<%= u.id%>">Edit</a></td>
-                    <td><a href="/delete/<%= u.id%>">Delete</a></td>
-                </tr>
-            <% }) %>
-        </table>
+        <section class="content">
+            <header class="container">
+                <div class="row">
+                    <div class="col col-md-2">
+                        <h1>All Users</h1>
+                    </div>
+                    <div class="col">
+                        <a href="/create" class="btn btn-outline-primary">New User</a>
+                    </div>                
+                </div>
+            </header>
+    
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-8 offset-md-2">
+                        <table class="table table-striped">
+                            <tr>
+                                <td>ID</td>
+                                <td>FIRST NAME</td>
+                                <td>LAST NAME</td>
+                            </tr>
+                            <% users.forEach((u) => { %>
+                                <tr>
+                                    <td><%= u.id%></td>
+                                    <td><%= u.firstName%></td>
+                                    <td><%= u.lastName%></td>
+                                    <td><a href="/update/<%= u.id%>"><i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                    <td><a href="/delete/<%= u.id%>"><i class="fa fa-lg fa-trash" aria-hidden="true"></i></a></td>
+                                </tr>
+                            <% }) %>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
 </html>

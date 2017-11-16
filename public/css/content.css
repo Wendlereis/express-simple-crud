@@ -1,0 +1,30 @@
+.content {
+    margin: 30px;
+}
+
+header {
+    margin: 15px 0;
+}
+
+header a {
+    margin-top: 5px;
+}
+
+header .btn {
+    border-color: #607D8B;
+    color: #607D8B;
+}
+
+header .btn:hover {
+    border-color: #ffffff;
+    background: #607D8B;
+    color: #ffffff;
+}
+
+td .fa {
+    color: #000;
+}
+
+td .fa:hover {
+    color: #0097A7;
+}
