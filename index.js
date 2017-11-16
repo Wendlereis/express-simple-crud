@@ -7,15 +7,15 @@ const app = express()
 app.use(bodyParser.urlencoded())
 app.use(bodyParser.json())
 
-app.use(express.static('public'))
-
 app.set('view engine', 'ejs')
 
 const User = require("./models/UserModel")
 
 //GET all Users
 app.get('/', (req, res) => {
-    User.findAll().then(users => {
+    User.findAll({
+        order: ['id']
+    }).then(users => {
         res.render('index', {users})
     })
 })
@@ -53,38 +53,8 @@ app.get('/delete/:id', (req, res) => {
     })    
 })
 
-//GET user by its id
-app.get('/:id', (req, res) => {
-    let id = req.params['id']
-
-    User.findById(id).then((user) => {
-        if(user){
-            res.send(user)
-        }
-        else {
-            res.sendStatus(404) 
-        }
-    })
-})
-
-//POST create a new user
-app.post('/', (req, res) => {
-    let body = req.body
-
-    console.log(body)
-
-    let newUser = {
-        firstName: body['firstName'],
-        lastName: body['lastName']
-    }
-
-    User.create(newUser).then((user) => {
-        res.send(user)
-    })
-})
-
-//PUT update a user by its id
-app.put('/:id', (req, res) => {
+//POST update a user by its id
+app.post('/update/:id', (req, res) => {
     let body = req.body
     let id = req.params['id']
 
@@ -107,8 +77,8 @@ app.put('/:id', (req, res) => {
     })
 })
 
-//DELETE delete a user by its id
-app.delete('/:id', (req, res) => {
+//POST delete a user by its id
+app.post('/delete/:id', (req, res) => {
     let id = req.params['id']
 
     User.destroy({
@@ -122,6 +92,20 @@ app.delete('/:id', (req, res) => {
         else {
             res.sendStatus(404)
         }
+    })
+})
+
+//POST create a new user
+app.post('/', (req, res) => {
+    let body = req.body
+
+    let newUser = {
+        firstName: body['firstName'],
+        lastName: body['lastName']
+    }
+
+    User.create(newUser).then((user) => {
+        res.send(user)
     })
 })
 

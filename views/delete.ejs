@@ -12,7 +12,7 @@
         <p><label>First Name: <%= user.firstName%></label></p>
         <p><label>Last Name: <%= user.lastName%></label></p>
 
-        <form method="delete" action="/<%= user.id%>">
+        <form method="post" action="/delete/<%= user.id%>">
             <p><input type="submit" value="Delete"></p>
         </form>
     </body>
