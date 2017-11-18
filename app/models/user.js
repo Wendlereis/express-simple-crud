@@ -1,4 +1,4 @@
-const sequelize = require('../connection/SequelizeConnection')
+const sequelize = require('../../config/sequelize.js') 
 
 module.exports = sequelize.define('UserModel',{
     firstName: {
