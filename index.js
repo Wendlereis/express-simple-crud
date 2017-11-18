@@ -5,13 +5,18 @@ const bodyParser = require('body-parser')
 const user = require('./app/routes/user')
 
 const app = express()
+
+//User route
+app.use('/', user)
+
+//Request parsers
 app.use(bodyParser.urlencoded())
 app.use(bodyParser.json())
 
+//Static import for .css, .js and img files
 app.use(express.static('public'))
 
-app.use('/', user)
-
+//Settig EJS view engine
 app.set('view engine', 'ejs')
 
 app.listen(3000, () => {
