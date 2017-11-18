@@ -28,3 +28,17 @@ td .fa {
 td .fa:hover {
     color: #0097A7;
 }
+
+form .btn-success {
+    width: 100%;
+    border-color: #0097A7;
+    background: #fff;
+    color: #0097A7;
+}
+
+form .btn-success:hover {
+    width: 100%;
+    border-color: #fff;
+    background: #0097A7;
+    color: #fff;
+}
