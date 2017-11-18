@@ -5,15 +5,47 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Express CRUD - Delete</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+        <script src="https://use.fontawesome.com/699a961ae1.js"></script>
+        <link rel="stylesheet" href="../css/header.css">
+        <link rel="stylesheet" href="../css/content.css">
     </head>
     <body>
-        <h1>Delete</h1>
+        <nav class="navbar">
+            <label>NodeJs + Express CRUD</label>
+        </nav>
 
-        <p><label>First Name: <%= user.firstName%></label></p>
-        <p><label>Last Name: <%= user.lastName%></label></p>
+        <section class="content">
+            <header class="container">
+                <div class="row">
+                    <div class="col col-md-4">
+                        <h1>Delete user</h1>
+                    </div>          
+                </div>
+            </header>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-4 offset-md-4">
+                        <div class="row">
+                            <label class="del-title">First Name: </label>
+                            <label class="del-description"><%= user.firstName%></label>
+                        </div>
 
-        <form method="post" action="/delete/<%= user.id%>">
-            <p><input type="submit" value="Delete"></p>
-        </form>
+                        <div class="row">
+                            <label class="del-title">Last Name: </label>
+                            <label class="del-description"><%= user.lastName%></label>
+                        </div>
+                        
+                        <div class="row">
+                            <form method="post" action="/delete/<%= user.id%>">
+                                <input type="submit" class="btn btn-outline-danger" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </section>
     </body>
 </html>

@@ -42,3 +42,14 @@ form .btn-success:hover {
     background: #0097A7;
     color: #fff;
 }
+
+.del-title {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-right: 4px;
+
+}
+
+.del-description {
+    font-size: 24px;
+}
