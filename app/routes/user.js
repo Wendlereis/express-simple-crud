@@ -7,13 +7,13 @@ const userController = require('../controllers/user')
 router.get('/', userController.getAll)
 
 //GET opens view create
-router.get('/create', userController.getCreateView)
+router.get('/create', (req, res) => userController.getView(req, res, 'create'))
 
 //GET opens view update
-router.get('/update/:id', userController.getUpdateView)
+router.get('/update/:id', (req, res) => userController.getUserView(req, res, 'update'))
 
 //GET opens view update
-router.get('/delete/:id', userController.getDeleteView)
+router.get('/delete/:id', (req, res) => userController.getUserView(req, res, 'delete'))
 
 //POST update a user by its id
 router.post('/update/:id', userController.updateUser)

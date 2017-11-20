@@ -8,16 +8,12 @@ exports.getAll = (req, res) => {
     })
 }
 
-exports.getCreateView = (req, res) => {
-    res.render('../app/views/create')
-}
-
-exports.getUpdateView = (req, res) => {
+exports.getUserView = (req, res, view) => {
     let id = req.params['id']
 
     User.findById(id).then((user) => {
         if(user){
-            res.render('../app/views/update', {user})
+            res.render(`../app/views/${view}`, {user})
         }
         else {
             res.sendStatus(404)
@@ -25,17 +21,8 @@ exports.getUpdateView = (req, res) => {
     })
 }
 
-exports.getDeleteView = (req, res) => {
-    let id = req.params['id']
-
-    User.findById(id).then((user) => {
-        if(user){
-            res.render('../app/views/delete', {user})
-        }
-        else {
-            res.sendStatus(404)
-        }
-    })
+exports.getView = (req, res, view) => {
+    res.render(`../app/views/${view}`)
 }
 
 exports.updateUser = (req, res) => {
