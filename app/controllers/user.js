@@ -1,4 +1,4 @@
-const User = require("../../app/models/user")
+const User = require('../../app/models/user')
 
 exports.getAll = (req, res) => {
     User.findAll({
@@ -86,7 +86,7 @@ exports.createUser = (req, res) => {
         lastName: body['lastName']
     }
 
-    User.create(newUser).then((user) => {
+    User.create(newUser).then(() => {
         res.redirect('/')
     })
 }
