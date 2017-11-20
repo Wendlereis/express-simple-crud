@@ -6,7 +6,7 @@ const userController = require('../controllers/user')
 //GET all users
 router.get('/', userController.getAll)
 
-//GET opens view create 
+//GET opens view create
 router.get('/create', userController.getCreateView)
 
 //GET opens view update

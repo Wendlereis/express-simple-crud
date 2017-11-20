@@ -14,28 +14,28 @@ exports.getCreateView = (req, res) => {
 
 exports.getUpdateView = (req, res) => {
     let id = req.params['id']
-    
+
     User.findById(id).then((user) => {
         if(user){
             res.render('../app/views/update', {user})
         }
         else {
-            res.sendStatus(404) 
+            res.sendStatus(404)
         }
-    })    
+    })
 }
 
 exports.getDeleteView = (req, res) => {
     let id = req.params['id']
-    
+
     User.findById(id).then((user) => {
         if(user){
             res.render('../app/views/delete', {user})
         }
         else {
-            res.sendStatus(404) 
+            res.sendStatus(404)
         }
-    })    
+    })
 }
 
 exports.updateUser = (req, res) => {
