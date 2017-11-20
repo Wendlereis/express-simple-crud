@@ -8,12 +8,12 @@ const user = require('./app/routes/user')
 
 const app = express()
 
-//User route
-app.use('/', user)
-
 //Request parsers
 app.use(bodyParser.urlencoded())
 app.use(bodyParser.json())
+
+//User route
+app.use('/', user)
 
 //Static import for .css, .js and img files
 app.use(express.static('public'))
